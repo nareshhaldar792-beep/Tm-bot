@@ -275,35 +275,9 @@ def init_db():
             android_id = c.execute("SELECT id FROM categories WHERE name=?", ("📱 Android",)).fetchone()["id"]
             iphone_id = c.execute("SELECT id FROM categories WHERE name=?", ("🍎 iPhone",)).fetchone()["id"]
 
-            android_products = [
-            ]
-            for name, desc, cat_id in android_products:
-                c.execute("INSERT INTO products (category_id, name, description) VALUES (?, ?, ?)",
-                          (cat_id, name, desc))
+            android_products = []
 
-            iphone_products = [
-        
-            ]
-            for name, desc, cat_id in iphone_products:
-                c.execute("INSERT INTO products (category_id, name, description) VALUES (?, ?, ?)",
-                          (cat_id, name, desc))
-
-            # Add sample plans
-            for name, desc, cat_id in android_products:
-                prod = c.execute("SELECT id FROM products WHERE name=?", (name,)).fetchone()
-                if prod:
-                    c.execute("INSERT INTO plans (product_id, name, price, duration) VALUES (?, ?, ?, ?)",
-                              (prod["id"], "1 Month", 149.00, "30 Days"))
-                    c.execute("INSERT INTO plans (product_id, name, price, duration) VALUES (?, ?, ?, ?)",
-                              (prod["id"], "3 Months", 399.00, "90 Days"))
-                    c.execute("INSERT INTO plans (product_id, name, price, duration) VALUES (?, ?, ?, ?)",
-                              (prod["id"], "12 Months", 1199.00, "365 Days"))
-
-            for name, desc, cat_id in iphone_products:
-                prod = c.execute("SELECT id FROM products WHERE name=?", (name,)).fetchone()
-                if prod:
-                    c.execute("INSERT INTO plans (product_id, name, price, duration) VALUES (?, ?, ?, ?)",
-                              (prod["id"], "1 Month", 199.00, "30 Days"))
+            iphone_products = []
 
 
 # ========== CATEGORY OPERATIONS ==========
