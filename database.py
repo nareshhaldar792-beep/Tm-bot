@@ -276,24 +276,13 @@ def init_db():
             iphone_id = c.execute("SELECT id FROM categories WHERE name=?", ("🍎 iPhone",)).fetchone()["id"]
 
             android_products = [
-                ("Netflix Premium", "Netflix Premium UHD 4K - 1 Month Subscription", android_id),
-                ("YouTube Premium", "YouTube Premium ad-free + YouTube Music", android_id),
-                ("Spotify Premium", "Spotify Premium Individual - 1 Month", android_id),
-                ("Amazon Prime", "Amazon Prime Video + Shopping - 1 Month", android_id),
-                ("Disney+ Hotstar", "Disney+ Hotstar Super - 1 Month", android_id),
-                ("Zee5 Premium", "Zee5 Premium HD - 1 Month", android_id),
-                ("Sony LIV Premium", "Sony LIV Premium - 1 Month", android_id),
-                ("Apple Music", "Apple Music Individual - 1 Month (Android)", android_id),
-                ("Crunchyroll", "Crunchyroll Mega Fan - 1 Month", android_id),
-                ("Tidal HiFi", "Tidal HiFi Plus - 1 Month", android_id),
             ]
             for name, desc, cat_id in android_products:
                 c.execute("INSERT INTO products (category_id, name, description) VALUES (?, ?, ?)",
                           (cat_id, name, desc))
 
             iphone_products = [
-                ("Apple One", "Apple One Individual - Music, TV+, Arcade, iCloud+", iphone_id),
-                ("iCloud+ 200GB", "iCloud+ 200GB Storage - 1 Month", iphone_id),
+        
             ]
             for name, desc, cat_id in iphone_products:
                 c.execute("INSERT INTO products (category_id, name, description) VALUES (?, ?, ?)",
